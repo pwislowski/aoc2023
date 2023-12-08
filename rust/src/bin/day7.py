@@ -41,7 +41,7 @@ def ms(lst, tab):
 
     return temp
 
-with open('./7.in', 'r') as f:
+with open('inputs/day7.in', 'r') as f:
     I = f.read().split("\n")
 
 # cards strength
