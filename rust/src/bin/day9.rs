@@ -1,5 +1,4 @@
 use aoc2023::read_file;
-use std::collections::HashMap;
 
 fn main() {
     let inn = read_file();
@@ -13,19 +12,11 @@ fn main() {
             .filter_map(|x| x.parse().ok())
             .collect();
 
-        let mut map: HashMap<i32, Vec<i32>> = HashMap::new();
         let mut diffs: Vec<i32> = Vec::new();
         let mut fdiffs: Vec<i32> = Vec::new();
+        let mut curr_arr = arr.clone();
         loop {
             let mut t: Vec<i32> = Vec::new();
-            let curr_arr = {
-                if diffs.is_empty() {
-                    &arr
-                } else {
-                    let last = diffs.last().unwrap();
-                    map.get(last).unwrap()
-                }
-            };
 
             for chunk in curr_arr.windows(2) {
                 let num1 = chunk[0];
@@ -41,7 +32,7 @@ fn main() {
             let first_diff = *t.first().unwrap();
             fdiffs.push(first_diff);
 
-            map.insert(last_diff, t);
+            curr_arr = t;
 
             if all_nuls {
                 break;
