@@ -28,4 +28,4 @@ def solve(file_name, spacing):
 
 fname = sys.argv[1]
 print(solve(fname, 2))  # part1
-print(solve(fname, 10**6))  # part1
+print(solve(fname, 10**6))  # part2
